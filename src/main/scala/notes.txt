@@ -1,0 +1,16 @@
+Either[L, R] is a container type that represents a value that can be one of two types:
+
+Left[L] — commonly used for an error, failure, or invalid result
+Right[R] — commonly used for a success, or valid result
+
+By convention in Scala:
+Right = success
+Left = failure
+
+
+Iterator- continually
+defcontinually[A](elem: ⇒ A): Iterator[A]
+Creates an infinite-length iterator returning the results of evaluating an expression.
+
+
+collectFirst: Finds the first element of the collection for which the given partial function is defined, and applies the partial function to it.

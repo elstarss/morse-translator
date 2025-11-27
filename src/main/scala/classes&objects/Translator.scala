@@ -1,7 +1,7 @@
 import Main.Language
 class Translator(val input: Array[String], val language: Language) {
-  val englishToMorseMap: Map[Char, String] = morseCode
-  val morseToEnglishMap: Map[String, Char] = morseCode.map(_.swap)
+  val englishToMorseMap: Map[Char, String] = MorseCode.englishToMorse
+  val morseToEnglishMap: Map[String, Char] = MorseCode.morseToEnglish
 
   def translate: String =
     if language == Language.English then translateEnglishToMorse(input)
@@ -19,9 +19,6 @@ class Translator(val input: Array[String], val language: Language) {
 
   private def translateMorseToEnglish(input: Array[String]): String =
     input
-      .map(morse =>
-        println(morse)
-        morseToEnglishMap(morse)
-      )
+      .map(morse => morseToEnglishMap(morse))
       .mkString
 }

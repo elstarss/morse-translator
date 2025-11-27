@@ -1,34 +1,5 @@
 import scala.io.StdIn.{readLine, readInt}
 import Main.Language
-val morseCode: Map[Char, String] = Map(
-  'A' -> ".-",
-  'B' -> "-...",
-  'C' -> "-.-.",
-  'D' -> "-..",
-  'E' -> ".",
-  'F' -> "..-.",
-  'G' -> "--.",
-  'H' -> "....",
-  'I' -> "..",
-  'J' -> ".---",
-  'K' -> "-.-",
-  'L' -> ".-..",
-  'M' -> "--",
-  'N' -> "-.",
-  'O' -> "---",
-  'P' -> ".--.",
-  'Q' -> "--.-",
-  'R' -> ".-.",
-  'S' -> "...",
-  'T' -> "-",
-  'U' -> "..-",
-  'V' -> "...-",
-  'W' -> ".--",
-  'X' -> "-..-",
-  'Y' -> "-.--",
-  'Z' -> "--..",
-  ' ' -> "/"
-)
 
 object InputHandler {
 
@@ -65,7 +36,7 @@ object InputHandler {
   }
 
   private def isPlainEnglish(s: String): Boolean =
-    s.forall(char => morseCode.contains(char))
+    s.forall(char => MorseCode.englishToMorse.contains(char))
   private def isMorseCode(s: String): Boolean =
     s.forall(char => char == '.' || char == '-' || char == ' ' || char == '/')
   private def validateInput(s: String): Either[String, Language] =

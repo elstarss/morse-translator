@@ -31,11 +31,14 @@ object Main extends App {
     'Z' -> "--..",
     ' ' -> "/"
   )
+  enum Language:
+    case English, Morse
 
   object Translator {}
   val (validInput, lang) = InputHandler.read()
 
-  println("To translate: " + validInput.mkString("[", ", ", "]"))
-  println("Language: " + lang)
-
+  val translator = new Translator(input = validInput, language = lang)
+  println(s"translating ${validInput.mkString("//")}")
+  println(translator.translate)
+  val toTranslate = ".... . .-.. .-.. --- / .-- --- .-. .-.. -.."
 }

@@ -9,7 +9,6 @@ class Translator(val input: Array[String], val language: Language) {
 
   private def translateEnglishToMorse(words: Array[String]): String =
     words
-      .map(_.toUpperCase)
       .map(word =>
         word
           .map(ch => englishToMorseMap(ch))

@@ -1,7 +1,4 @@
-import scala.io.StdIn.{readLine, readInt}
-
 object Main extends App {
-// keeping global as multiple classes need access
 
   enum Language:
     case English, Morse

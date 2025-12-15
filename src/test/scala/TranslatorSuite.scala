@@ -1,25 +1,37 @@
 import org.scalatest.funsuite.AnyFunSuite
-import Main.Language
+import entities.Translator
+import entities.Language
+
 
 class TranslatorSuite extends AnyFunSuite {
 
-  val morseCode: Map[Char, String] = Map(
-    'A' -> ".-", 'B' -> "-...", 'C' -> "-.-.", 'D' -> "-..",
-    'E' -> ".", 'F' -> "..-.", 'G' -> "--.", 'H' -> "....",
-    'I' -> "..", 'J' -> ".---", 'K' -> "-.-", 'L' -> ".-..",
-    'M' -> "--", 'N' -> "-.", 'O' -> "---", 'P' -> ".--.",
-    'Q' -> "--.-", 'R' -> ".-.", 'S' -> "...", 'T' -> "-",
-    'U' -> "..-", 'V' -> "...-", 'W' -> ".--", 'X' -> "-..-",
-    'Y' -> "-.--", 'Z' -> "--..", ' ' -> "/", '.' -> ".-.-.-",
-    ',' -> "--..--", '?' -> "..--..", '!' -> "-.-.--", ':' -> "---...",
-    ';' -> "-.-.-.", '\'' -> ".--.-.", '"' -> ".-..-..-"
-  )
-
   test("English to Morse: SOS") {
-    val toTranslate = "SOS"
-    val translator = Translator(toTranslate.split(" "), Language.English)
+    val translator = new Translator(
+      "SOS".split(" "),
+      Language.ENGLISH
+    )
     val obtained = translator.translate
     val expected = "... --- ..."
+    assert(obtained == expected)
+  }
+
+  test("Morse to English: .... . .-.. .-.. ---") {
+    val translator = new Translator(
+      ".... . .-.. .-.. ---".split(" "),
+      Language.MORSE
+    )
+    val obtained = translator.translate
+    val expected = "HELLO"
+    assert(obtained == expected)
+  }
+
+  test("Handles word separator") {
+    val translator = new Translator(
+      ".... . .-.. .-.. --- / .-- --- .-. .-.. -..".split(" "),
+      Language.MORSE
+    )
+    val obtained = translator.translate
+    val expected = "HELLO WORLD"
     assert(obtained == expected)
   }
 }

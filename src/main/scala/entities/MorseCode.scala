@@ -1,3 +1,4 @@
+package entities
 object MorseCode {
   val englishToMorse: Map[Char, String] = Map(
     'A' -> ".-",

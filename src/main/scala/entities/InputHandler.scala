@@ -1,5 +1,6 @@
+package entities
 import scala.io.StdIn.{readLine, readInt}
-import Main.Language
+
 
 object InputHandler {
 
@@ -41,8 +42,8 @@ object InputHandler {
     s.forall(char => char == '.' || char == '-' || char == ' ' || char == '/')
   private def validateInput(s: String): Either[String, Language] =
     (isPlainEnglish(s), isMorseCode(s)) match {
-      case (true, false) => Right(Language.English)
-      case (false, true) => Right(Language.Morse)
+      case (true, false) => Right(Language.ENGLISH)
+      case (false, true) => Right(Language.MORSE)
       case (false, false) =>
         Left(
           "Invalid: contains unsupported characters. Please refer to the mapping to see which characters are supported."

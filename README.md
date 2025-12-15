@@ -1,6 +1,6 @@
 ## sbt project compiled with Scala 3
 
-Morse Code Translator – Scala CLI App
+Morse Code entities.Translator – Scala CLI App
 - Accepts user input via command line
 Translate:
 - English → Morse

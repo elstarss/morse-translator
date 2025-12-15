@@ -1,3 +1,5 @@
+import entities.{InputHandler, OutputHandler, Translator}
+
 object Main extends App {
 
   enum Language:
@@ -7,7 +9,7 @@ object Main extends App {
 
   val translator = new Translator(input = validInput, language = lang)
   val translatedText = translator.translate
-  val outputHandler = OutputHandler(translatedText)
-  outputHandler.output
+  val outputHandler = OutputHandler
+  outputHandler.output(translatedText)
 
 }
